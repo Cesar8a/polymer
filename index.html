@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+	<title>aprendiendo-polymer</title>
+	<meta name="description" content="Mis primeros pasos con Polymer">
+
+	<!-- See https://goo.gl/OOhYW5 -->
+	<link rel="manifest" href="/manifest.json">
+
+	<script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+	<link rel="import" href="/src/aprendiendo-polymer-app/aprendiendo-polymer-app.html">
+	<link rel="import" href="/src/aprendiendo-polymer-app/ciclo-vida.html">
+	<link rel="import" href="/src/aprendiendo-polymer-app/binding-example.html">
+	<link rel="import" href="/src/aprendiendo-polymer-app/cuenta-clics.html">
+	<link rel="import" href="/src/aprendiendo-polymer-app/validacion-email.html">
+	<link rel="import" href="/src/aprendiendo-polymer-app/manejador-eventos.html">
+
+	<style>
+	.content{
+	background-color: #333;
+	padding: 25px;
+	}
+
+	.table {
+	display: table;
+	width: 100%;
+	}
+
+	.row {
+	display: table-row;
+	}
+
+	.cell {
+	background-color: #666;
+	display: table-cell;
+	width: 50%;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="content">
+		<div class="table">
+			<div class="row">
+				<div class="cell">
+					<!-- Mi primer componente -->
+					<aprendiendo-polymer-app></aprendiendo-polymer-app>
+				</div>
+				<div class="cell">
+					<!-- Componente ciclo de vida -->
+					<ciclo-vida></ciclo-vida>
+					<ciclo-vida></ciclo-vida>
+				</div>
+			</div>
+		</div>
+
+		<div class="table">
+			<div class="row">
+				<div class="cell">
+
+					<h1>Uso del componente ciclo-vida</h1>
+					<p>Se colocan dos elementos en el body y se generan dos elementos en la memoria de Javascript.</p>
+					<p>Pulsa además los botones para poder producir cambios en el estado de un elemento y ver los otros mensajes del ciclo de vida.</p>
+				
+					<button id="addDom">Añadir un elemento al DOM</button>
+					<button id="deleteDom">Quitar un elemento al DOM</button>
+					<button id="changeAttribute">Cambiar attributo</button>
+				</div>
+				<div class="cell">
+					<!-- Componente binding -->
+					<binding-example></binding-example>
+				</div>
+			</div>
+		</div>
+
+		<div class="table">
+			<div class="row">
+				<div class="cell">
+					<!-- Componente cuenta-clics -->
+					<cuenta-clics></cuenta-clics>
+				</div>
+				<div class="cell">
+					<!-- Componente validacion-email -->
+					<validacion-email></validacion-email>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<manejador-eventos></manejador-eventos>
+
+	<script>
+		var el1 = document.createElement("ciclo-vida");
+		el1.setAttribute('id','el1');
+		//const el2 = new CicloVida();
+		//console.log(el2);
+
+		document.getElementById("addDom").addEventListener('click', function() {
+			document.body.appendChild(el1);
+		});
+
+		document.getElementById("deleteDom").addEventListener('click', function() {
+			document.body.removeChild(document.getElementById("el1"));
+		});
+
+		document.getElementById("changeAttribute").addEventListener('click', function() {
+			el1.setAttribute('test','valor test: '+Date.now());
+			console.log(el1);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "aprendiendo-polymer",
+  "short_name": "aprendiendo-polymer",
+  "description": "Mis primeros pasos con Polymer",
+  "start_url": "/",
+  "display": "standalone"
+}
